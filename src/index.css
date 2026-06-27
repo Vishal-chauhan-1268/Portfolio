@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cursor-x: 50%;
+  --cursor-y: 50%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: #050505;
+  color: #f4f5f7;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+body.light {
+  background-color: #f4f5f7;
+  color: #0a0a0d;
+}
+
+@media (max-width: 768px), (hover: none) {
+  body {
+    cursor: auto;
+  }
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: 'Syne', sans-serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #4d7fff, #8b5cf6);
+  border-radius: 4px;
+}
+
+/* Glass panel utility */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.light .glass {
+  background: rgba(10, 10, 13, 0.04);
+  border: 1px solid rgba(10, 10, 13, 0.08);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #4d7fff, #8b5cf6, #3fe0e0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* Section spacing rhythm — single source of truth, avoid clashing utility classes */
+.section {
+  position: relative;
+  padding: clamp(4rem, 10vh, 8rem) 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+.section-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* Magnetic button base */
+.magnetic {
+  transition: transform 0.2s ease;
+}
+
+::selection {
+  background: rgba(77, 127, 255, 0.35);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
